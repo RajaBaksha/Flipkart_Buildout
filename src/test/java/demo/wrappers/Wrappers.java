@@ -131,6 +131,7 @@ public class Wrappers {
                 {
                     System.out.println("Product Title is:" +productTitleAndDisc.getKey()+ "and its Discount is:" +productTitleAndDisc.getValue()+ "% discount");
                 }
+                
             }
             catch(Exception e)
             {
