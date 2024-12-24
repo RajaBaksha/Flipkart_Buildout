@@ -34,27 +34,28 @@ public class TestCases {
      {
         try
         {
-            //driver.get("https://www.flipkart.com/");
-            
-            // WebElement searchTextBox = driver.findElement(By.xpath("//input[@name='q']"));
-            // Wrappers.searchForProduct(searchTextBox, "Washing Machine");
-            // Thread.sleep(4000);
+            Wrappers wrappers = new Wrappers(driver);
 
-            // WebElement searchIcon = driver.findElement(By.xpath("//button[@type='submit']"));
-            // searchIcon.click();
-            // Thread.sleep(4000);
+            System.out.println("Start Test Case 01");
+
             String url = "https://www.flipkart.com/";
             
-            Wrappers.navigateToURL(driver, url);
+            //Navigate to url
+            wrappers.navigateToURL(url);
 
-            Wrappers.searchProductAndClick(driver, "Washing Machine");
+            //Search for "Washing Machine"
+            wrappers.searchProductAndClick("Washing Machine");
             
+            //Sort the products by popularity
             WebElement sortBypopularityEle = driver.findElement(By.xpath("//div[text()='Popularity']"));
-            sortBypopularityEle.click();
+            wrappers.clickOnElement(sortBypopularityEle);
             Thread.sleep(4000);
 
-            int totalNumberOfProducts = Wrappers.numberOfProductswithSpecifiedRatings(driver, 4.0);
+            //Get the count of products having rating less than or equal to 4
+            int totalNumberOfProducts = wrappers.numberOfProductswithSpecifiedRatings(4.0);
             System.out.println(totalNumberOfProducts);
+
+            System.out.println("End Test Case 01");
             
         }
         catch(Exception e)
@@ -68,22 +69,22 @@ public class TestCases {
     {
         try
         {
-            // driver.get("https://www.flipkart.com/");
+            Wrappers wrappers = new Wrappers(driver);
 
-            // WebElement searchTextBox = driver.findElement(By.xpath("//input[@name='q']"));
-            // Wrappers.searchForProduct(searchTextBox, "iPhone");
-            // Thread.sleep(4000);
+            System.out.println("Start Test Case 02");
 
-            // WebElement searchIcon = driver.findElement(By.xpath("//button[@type='submit']"));
-            // searchIcon.click();
-            // Thread.sleep(6000);
             String url = "https://www.flipkart.com/";
             
-            Wrappers.navigateToURL(driver, url);
+            //Navigate to url
+            wrappers.navigateToURL(url);
 
-            Wrappers.searchProductAndClick(driver, "iPhone");
+            //Search for "iPhone"
+            wrappers.searchProductAndClick("iPhone");
 
-            Wrappers.printTitleandDiscountForProduct(driver,17);
+            //Print title and discount % of all products having discount greater than 17
+            wrappers.printTitleandDiscountForProduct(17);
+
+            System.out.println("End Test Case 02");
         }
         catch(Exception e)
         {
@@ -96,28 +97,28 @@ public class TestCases {
     {
         try
         {
-            // driver.get("https://www.flipkart.com/");
+            Wrappers wrappers = new Wrappers(driver);
 
-            // WebElement searchTextBox = driver.findElement(By.xpath("//input[@name='q']"));
-            // Wrappers.searchForProduct(searchTextBox, "Coffee Mug");
-            // Thread.sleep(6000);
-
-            // WebElement searchIcon = driver.findElement(By.xpath("//button[@type='submit']"));
-            // searchIcon.click();
-            // Thread.sleep(6000);
+            System.out.println("Start Test Case 03");
 
             String url = "https://www.flipkart.com/";
             
-            Wrappers.navigateToURL(driver, url);
+            //Navigate to url
+            wrappers.navigateToURL(url);
 
-            Wrappers.searchProductAndClick(driver, "Coffee Mug");
+            //Search for "Coffee Mug"
+            wrappers.searchProductAndClick("Coffee Mug");
 
+            //Locate and click on 4 star check box
             WebElement fourStarCheckBox = driver.findElement(By.xpath("(//div[contains(@class,'QCKZip ')])[1]"));
-            fourStarCheckBox.click();
+            wrappers.clickOnElement(fourStarCheckBox);
             Thread.sleep(4000);
 
+            //Print the title and imageURL of 5 items having highest number of reviews
             List<WebElement> productReviews = driver.findElements(By.xpath("//span[@class = 'Wphh3N']"));
-            Wrappers.printTitleAndImageUrlForProduct(driver,productReviews,5);
+            wrappers.printTitleAndImageUrlForProduct(productReviews,5);
+
+            System.out.println("End Test Case 03");
         }
         catch(Exception e)
         {

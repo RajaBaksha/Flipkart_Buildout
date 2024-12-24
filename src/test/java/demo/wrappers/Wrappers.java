@@ -26,22 +26,16 @@ public class Wrappers {
     /*
      * Write your selenium wrappers here
      */
-    static WebDriverWait wait;
-        // public static void searchForProduct(WebElement element, String ProductName)
-        // {
-        //     try
-        //     {
-        //         element.click();
-        //         element.clear();
-        //         element.sendKeys(ProductName);
-                
-        //     }
-        //     catch(Exception e)
-        //     {
-        //         e.printStackTrace();
-        //     }
-        // }
-        public static void navigateToURL(ChromeDriver driver,String url)
+        ChromeDriver driver;
+        WebDriverWait wait;
+
+        public Wrappers(ChromeDriver driver)
+        {
+            this.driver = driver;
+            wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        } 
+        
+        public void navigateToURL(String url)
         {
             try
             {
@@ -55,23 +49,30 @@ public class Wrappers {
             }
         }
 
-        public static void searchProductAndClick(ChromeDriver driver,String productName) throws InterruptedException
+        public void searchProductAndClick(String productName) throws InterruptedException
         {
-            WebElement searchTextBox = driver.findElement(By.xpath("//input[@name='q']"));
+            //WebElement searchTextBox = driver.findElement(By.xpath("//input[@name='q']"));
+            WebElement searchTextBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='q']")));
             searchTextBox.click();
             searchTextBox.clear();
             Thread.sleep(3000);
             searchTextBox.sendKeys(productName);
             Thread.sleep(5000);
 
-            WebElement searchIcon = driver.findElement(By.xpath("//button[@type='submit']"));
-            Thread.sleep(3000);
+            //WebElement searchIcon = driver.findElement(By.xpath("//button[@type='submit']"));
+            WebElement searchIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit']")));
+            //Thread.sleep(3000);
             searchIcon.click();
             Thread.sleep(4000);
 
         }
 
-        public static int numberOfProductswithSpecifiedRatings(ChromeDriver driver, double value)
+        public void clickOnElement(WebElement element)
+        {
+            element.click();
+        }
+
+        public int numberOfProductswithSpecifiedRatings(double value)
         {
             try
             {
@@ -102,7 +103,7 @@ public class Wrappers {
             }
         }
 
-        public static void printTitleandDiscountForProduct(ChromeDriver driver,int discount)
+        public void printTitleandDiscountForProduct(int discount)
         {
             try
             {
@@ -137,7 +138,7 @@ public class Wrappers {
             }
         }
 
-    public static void printTitleAndImageUrlForProduct(ChromeDriver driver, List<WebElement> productReviews, int n)
+    public void printTitleAndImageUrlForProduct(List<WebElement> productReviews, int n)
     {
         try
         {
