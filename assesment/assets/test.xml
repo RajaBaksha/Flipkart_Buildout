@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.45">
+<file name="E:\XFlipkartProject\mdraffiq27-ME_QA_XFLIPKART_SEARCH\src\test\java\demo\TestCases.java">
+<error line="19" severity="error" message="USED_COMMENT" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+<error line="37" severity="error" message="USED_THREAD_SLEEP" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+<error line="46" severity="error" message="USED_SOPL" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+<error line="58" severity="error" message="USED_COMMENT" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+<error line="59" severity="error" message="USED_COMMENT" source="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineJavaCheck"/>
+</file>
+<file name="E:\XFlipkartProject\mdraffiq27-ME_QA_XFLIPKART_SEARCH\src\test\java\demo\wrappers\Wrappers.java">
+</file>
+</checkstyle>
